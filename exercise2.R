@@ -32,7 +32,14 @@ for(num in 1:20){
     }
 }
 
+#5. A biologist is modelling population growth using a Gompertz curve, which is defined as y(t) = a.e−b.e−c.t where y is population size, t is time, a and b are parameters, and e is the exponent al function. Write them a function that calculates population size at any time for any values of its parameters.
+pop_growth=function(a, b, c, t){
+a*exp((-b)*exp((-c)*t)) 
+}
 
+#plugging in random numbers
+pop_growth(1,2,.5,5)
+  
 
 
 
