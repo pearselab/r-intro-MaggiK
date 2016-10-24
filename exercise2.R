@@ -33,13 +33,23 @@ for(num in 1:20){
 }
 
 #5. A biologist is modelling population growth using a Gompertz curve, which is defined as y(t) = a.e−b.e−c.t where y is population size, t is time, a and b are parameters, and e is the exponent al function. Write them a function that calculates population size at any time for any values of its parameters.
+a= .1
+b= 2
+c= .5
+t= 5
 pop_growth=function(a, b, c, t){
 a*exp((-b)*exp((-c)*t)) 
 }
 
 #plugging in random numbers
-pop_growth(1,2,.5,5)
-  
+y=pop_growth(a,b,c,t)
+y
+#6. The biologist likes your function so much they want you to write another function that plots the progress of the population over a given length of time. Write it for them.
+plot(t, y, xlab= "Time", ylab="Population Growth")
+
+
+#7. The biologist has fallen in love with your plotting function, but want to colour y values above a as blue, and y values above b as red. Change your function to allow that.
+plot(t, y, xlab= "Time", ylab="Population Growth", col=ifelse(a<y, "blue", ifelse(y>b, "red", "black")))
 
 
 
