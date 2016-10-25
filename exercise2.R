@@ -33,9 +33,9 @@ for(num in 1:20){
 }
 
 #5. A biologist is modelling population growth using a Gompertz curve, which is defined as y(t) = a.e−b.e−c.t where y is population size, t is time, a and b are parameters, and e is the exponent al function. Write them a function that calculates population size at any time for any values of its parameters.
-a= .1
-b= 2
-c= .5
+a= 4 #carrying capacity
+b= 3 #displacement rate
+c= 1 #population growth rate
 t= 5
 pop_growth=function(a, b, c, t){
 a*exp((-b)*exp((-c)*t)) 
@@ -45,12 +45,33 @@ a*exp((-b)*exp((-c)*t))
 y=pop_growth(a,b,c,t)
 y
 #6. The biologist likes your function so much they want you to write another function that plots the progress of the population over a given length of time. Write it for them.
+pop_plot=function(t, y){
 plot(t, y, xlab= "Time", ylab="Population Growth")
-
+}
+pop_plot(5, y)
 
 #7. The biologist has fallen in love with your plotting function, but want to colour y values above a as blue, and y values above b as red. Change your function to allow that.
+pop_plot=function(t,y){
 plot(t, y, xlab= "Time", ylab="Population Growth", col=ifelse(a<y, "blue", ifelse(y>b, "red", "black")))
+}
+#8. You are beginning to suspect the biologist is taking advantage of you. Modify your function to plot in purple any y value that’s above a and b. Hint: try putting 3==3 & 2==2 and 3==4 | 2==2 into an if statement and see what you get. Using this construction may make this simpler.
+pop_plot=function(t,y){
+  plot(t, y, xlab= "Time", ylab="Population Growth", col=ifelse(y>a & y>b , "purple", "black"))
+}
+pop_plot(5, y)
 
+#9. Write a function that draws boxes of a specified width and height that look like this (height 3, width 5):
+x=c(1,2,3,4,5)
+y=c(1,1,1,1,1)
+plot(x,y)
+box(which="wdp", 3, 5, "hey")
 
+axis(1, at = 1:7, labels = letters[1:7])
+box(lty = '1373', col = 'red')
 
+box(which="figure", lty="dash", )
 
+bx_plot=function(){
+  plot()
+  
+}
