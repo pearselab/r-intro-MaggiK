@@ -104,46 +104,27 @@ bx_func<-function(x,y,tx){
 bx_func(x,y,tx)
 
 #11. Modify your box function to build boxes of arbitrary text, taking dimensions specified in terms of dimensions, not the text. For example, box("wdp", 3, 9, "hey") might produce:
-x<-c(1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,1.0,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.0)
-y<-c(1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0)
-tx<- "smile"
 
-bx_func<-function(x,y,tx){
-  plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10))
-  text(x,y, labels="ski", cex=.5)
-  text(2,2, labels=tx, pos=4)
-}
-bx_func(x,y,tx)
 
-#help. This creates part of a box. 
+#where width= the width, height=the height, txt= is the text in the middle, symb= symbol used to create the box
+bx<- function(width, height, txt, symb){
+for (k in 1:width)
+  cat(symb)
+cat("\n")
 
-{for (k in 1:5){
-  cat("*")
+for (j in 1:height){
+  cat(symb, txt,  symb, "\n") 
 }
 
-for (j in 1:3){
-  cat("*\n", paste("    *\n")) 
+for (i in 1:width)
+  cat(symb)
+  cat("\n")
 }
 
-for (i in 1:5){
-  cat("*")
-}
-}
+bx(5,4, "hey", "ll")
+
+#12. In ecology, hurdle models are often used to model the abundance of species found on survey. They first model the probability that a species will be present at a site (drawn, for example, from a Bernoulli distribution) and thenmodel the abundance for any species that is present (drawn, for example, from the Poisson distribution). Write a function that simulates the abundance of a species at n sites given a probability of presence (p) and that its abundance is drawn from a Poisson with a given λ. Hint: there is no Bernoulli distribution in R, but the Bernoulli is a special case of what distribution?...
 
 
 
-##random stuff
-plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10))
-text(x,y,label="wdp",col='blue', cex=.5)
-points(x,y, pch=)
-par(fin=.3,.5)
-
-plot(-1:1, -1:1, type = "n", xlab = "Re", ylab = "Im")
-K <- 16; text(exp(1i * 2 * pi * (1:K) / K), col = 2)
-
-dat <- data.frame(x=rnorm(100), y1=rnorm(100)-1, y2=rnorm(100), y3=rnorm(100)+1)
-plot(y1 ~ x, data=dat, type='n', ylim=c(-4, 4))     
-text(dat$x,dat$y1,label=0,col='blue')
-text(dat$x,dat$y2,label=1,col='green')
-text(dat$x,dat$y3,label=2,,col='red')
 
