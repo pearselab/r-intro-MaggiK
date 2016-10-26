@@ -123,7 +123,22 @@ for (i in 1:width)
 
 bx(5,4, "hey", "ll")
 
-#12. In ecology, hurdle models are often used to model the abundance of species found on survey. They first model the probability that a species will be present at a site (drawn, for example, from a Bernoulli distribution) and thenmodel the abundance for any species that is present (drawn, for example, from the Poisson distribution). Write a function that simulates the abundance of a species at n sites given a probability of presence (p) and that its abundance is drawn from a Poisson with a given λ. Hint: there is no Bernoulli distribution in R, but the Bernoulli is a special case of what distribution?...
+#12. In ecology, hurdle models are often used to model the abundance of species found on survey. They first model the probability that a species will be present at a site (drawn, for example, from a Bernoulli distribution) and then model the abundance for any species that is present (drawn, for example, from the Poisson distribution). Write a function that simulates the abundance of a species at n sites given a probability of presence (p) and that its abundance is drawn from a Poisson with a given λ. Hint: there is no Bernoulli distribution in R, but the Bernoulli is a special case of what distribution?...
+# probability distribution of a random variable
+
+#rbinom(n or number of obs, size or trials, probability of success)
+presence <- function(p){
+  return(rbinom(1, 1, p))
+}
+
+abundance <- function(p, lam){
+  return(qpois(p, lam))
+}
+
+# I have no idea if this is correct. I don't know how to check it either because I don't know much about bernoulli and poisson stuff. (it has been 8ish years).
+
+#13. An ecologist really likes your hurdle function (will you never learn?). Write them a function that simulates lots of species (each with their own p and λ) across n sites. Return the results in a matrix where each species is a column, and each site a row (this is the standard used for ecology data in R).
+
 
 
 

@@ -53,12 +53,16 @@ new.pts<-function(x, y){
   return(output)
 }
 
-pt1=new.pts(3,4)
-pt2=new.pts(4,5)
+pt1=new.pts(1,1)
+pt2=new.pts(3,1)
+pt3=new.pts(6,3)
+
+
 print.pts<-function(pt1,pt2, ...){
-  dif = pt1$x-pt2$x
+  dif = sqrt(sum((pt1$x-pt2$x)^2))
   return(dif)
 }
-
+#testing it with the points created above
+print.pts(pt1, pt2)
 
 
