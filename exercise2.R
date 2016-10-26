@@ -45,8 +45,7 @@ y
 pop_growth=function(a, b, c, d){
   t<-0
   vector<-0
-  tme= c(1:d)
-  for (i in tme){
+  for (i in 1:d){
     t=c(t, i)
     pop <- a*exp((-b)*exp((-c)*i))
     vector= c(vector, pop)
@@ -59,8 +58,7 @@ pop_growth(280,100,.4,30)#Thank you Karen!!
 pop_growth=function(a, b, c, d){
   t<-0
   vector<-0
-  tme= c(1:d)
-  for (i in tme){
+  for (i in 1:d){
     t=c(t, i)
     pop <- a*exp((-b)*exp((-c)*i))
     vector= c(vector, pop)
@@ -70,10 +68,17 @@ pop_growth=function(a, b, c, d){
 pop_growth(280,100,.4,30)#Thank you Karen!!
 
 #8. You are beginning to suspect the biologist is taking advantage of you. Modify your function to plot in purple any y value that’s above a and b. Hint: try putting 3==3 & 2==2 and 3==4 | 2==2 into an if statement and see what you get. Using this construction may make this simpler.
-pop_plot=function(t,y){
-  plot(t, y, xlab= "Time", ylab="Population Growth", col=ifelse(y>a & y>b , "purple", "black"))
+pop_growth=function(a, b, c, d){
+  t<-0
+  vector<-0
+  for (i in 1:d){
+    t=c(t, i)
+    pop <- a*exp((-b)*exp((-c)*i))
+    vector= c(vector, pop)
+  }
+  plot(t, vector, xlab= "Time", ylab="Population Growth", col=ifelse(vector>a | vector>b , "purple", "black"))
 }
-pop_plot(5, y)
+pop_growth(280,100,.4,30)
 
 #9. Write a function that draws boxes of a specified width and height that look like this (height 3, width 5):
 #x values of the points
@@ -110,7 +115,21 @@ bx_func<-function(x,y,tx){
 }
 bx_func(x,y,tx)
 
-cat("hey\n\n")
+#help. This creates part of a box. 
+
+{for (k in 1:5){
+  cat("*")
+}
+
+for (j in 1:3){
+  cat("*\n", paste("    *\n")) 
+}
+
+for (i in 1:5){
+  cat("*")
+}
+}
+
 
 
 ##random stuff
