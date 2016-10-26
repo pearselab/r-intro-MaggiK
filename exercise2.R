@@ -61,17 +61,39 @@ pop_plot=function(t,y){
 pop_plot(5, y)
 
 #9. Write a function that draws boxes of a specified width and height that look like this (height 3, width 5):
-x=c(1,2,3,4,5)
-y=c(1,1,1,1,1)
-plot(x,y)
-box(which="wdp", 3, 5, "hey")
-
-axis(1, at = 1:7, labels = letters[1:7])
-box(lty = '1373', col = 'red')
-
-box(which="figure", lty="dash", )
-
-bx_plot=function(){
-  plot()
-  
+x<-c(1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,1.0,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.0)
+y<-c(1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0)
+bx_func<-function(x,y){
+plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10), pch=8)
+points(x,y, pch=8)
 }
+
+#10. Modify your box function to put text centred inside the box, like this:
+x<-c(1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,1.0,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.0)
+y<-c(1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0)
+bx_func<-function(x,y){
+  plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10), pch=8)
+  points(x,y, pch=8)
+  text(1.5,2, labels="some text", pos=4)
+}
+bx_func(x,y)
+
+#11. Modify your box function to build boxes of arbitrary text, taking dimensions specified in terms of dimensions, not the text. For example, box("wdp", 3, 9, "hey") might produce:
+x<-c(1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,1.0,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.0)
+y<-c(1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0)
+tx= "some text"
+bx_func<-function(x,y,tx){
+  plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10), pch=8)
+  points(x,y, pch=8)
+  text(1.5,2, labels=tx, pos=4)
+}
+bx_func(x,y,tx)
+
+plot(x,y, type="n", axes=F, ann=F, xlim=c(0,10), ylim=c(0,10))
+points(x,y, pch=8)
+par(fin=.3,.5)
+
+plot(-1:1, -1:1, type = "n", xlab = "Re", ylab = "Im")
+K <- 16; text(exp(1i * 2 * pi * (1:K) / K), col = 2)
+
+
