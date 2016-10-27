@@ -135,7 +135,6 @@ abundance <- function(p, lam){
   return(qpois(p, lam))
 }
 
-# I have no idea if this is correct. I don't know how to check it either because I don't know much about bernoulli and poisson stuff. (it has been 8ish years).
 
 #13. An ecologist really likes your hurdle function (will you never learn?). Write them a function that simulates lots of species (each with their own p and λ) across n sites. Return the results in a matrix where each species is a column, and each site a row (this is the standard used for ecology data in R).
 
