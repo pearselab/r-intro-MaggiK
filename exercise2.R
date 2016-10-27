@@ -129,12 +129,16 @@ bx(5,4, "hey", "ll")
 #rbinom(n or number of obs, size or trials, probability of success)
 presence <- function(p){
   return(rbinom(1, 1, p))
-}
+  }
 
+#abundance function 
 abundance <- function(p, lam){
-  return(qpois(p, lam))
-}
-
+    if(rbinom(1, 1, p) == 1){
+      return(rpois(1, lam))
+    }
+    }
+#checking. Spit out 294. I guess this works.
+abundance(.9, 300)
 
 #13. An ecologist really likes your hurdle function (will you never learn?). Write them a function that simulates lots of species (each with their own p and λ) across n sites. Return the results in a matrix where each species is a column, and each site a row (this is the standard used for ecology data in R).
 

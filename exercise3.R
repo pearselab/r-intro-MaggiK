@@ -121,7 +121,52 @@ plot_poly(pt1, pt2, pt3)
 
 ##8. Create a canvas object that the add function can add point, line, circle, and polygon objects to. Write plot and print methods for this class.
 
+#I am assuming a canvas is a blank plot
+canvas <-list(object)
+class(canvas)<- "object"
 
+new.object<-function(){
+  output <- list(weight=weight, breed=breed)
+  class(output)<- "cat"
+  return(output)
+}
+
+
+plot.new()
+plot(NA, xlim=c(0,10), ylim=c(0,10), xlab="x", ylab="y")
+
+#9. Implement a circle object that takes a point and a radius and stores a circle. Don’t make a circle out of lines!
+circle_object<- function(x,y,r){
+t <- seq(0,2*pi,length=100) 
+coords <- t(rbind(x+sin(t)*r, y+cos(t)*r)) 
+plot(coords, type= "l") 
+}
+#checking to see if it created a circle with the radius and point
+circle_object(4,4,2)
+
+###10. Write area generic methods for circle and polygon objects.
+area<- function(r){
+  UseMethod("area")
+}
+area.circle<- function(r){
+  out= pi*r^2
+  return(out)
+}
+
+###11. Add support for circle objects to your canvas.
+circle_object<- function(x,y,r){
+  t <- seq(0,2*pi,length=100) 
+  coords <- t(rbind(x+sin(t)*r, y+cos(t)*r)) 
+  plot(coords, type= "l") 
+  p1= new.pts(x,y)
+  p2=new.pts(x,(y-r))
+  plot_line(p1,p2)
+}
+
+circle_object(3,3,2)
+#I added a line in the circle. I am not sure if this is support but it seems like support to me.
+
+####12. Add a summary method for canvas that calculates the height and width of the canvas, the fraction of the canvas covered in filled-in polygons and circles (if appropriate), and average distance between any points on the canvas (if appropriate).
 
 lines(list(lines(lines(cbind(x,y)), ID="a")))
 plot(NA, xlim=c(0,10), ylim=c(0,10), xlab="x", ylab="y")
