@@ -1,7 +1,7 @@
 ###Programming for Biologists
 ###Exercise 3
 
-#1. Implement a cat class, complete with race and print methods
+###1. Implement a cat class, complete with race and print methods
 kittywitty <-list(length=15, weight=10, breed="white")
 class(kittywitty)<- "cat"
 
@@ -31,7 +31,7 @@ print.cat <- function(x, ...){
 #testing
 new.cat(20, "brown") #This  brown cat weighs  20 kg (it works!)
 
-#2. Implement a point class that holds x and y information for a point in space.
+###2. Implement a point class that holds x and y information for a point in space.
 pts <-list(x=2, y=4)
 class(pts)<- "pts"
 
@@ -42,7 +42,7 @@ new.pts<-function(x, y){
 }
 new.pts(2,4)
 
-#3. Write a distance method that calculates the distance between two points in space
+###3. Write a distance method that calculates the distance between two points in space
 pts <-list(x=2, y=1)
 class(pts)<- "pts"
 pts
@@ -64,36 +64,64 @@ print.pts<-function(pt1,pt2, ...){
 #testing it with the points created above
 print.pts(pt1, pt3)
 
-#4. Implement a line class that takes two point objects and makes a line between them
+###4. Implement a line class that takes two point objects and makes a line between them
 
-#creating the line class function
+#creating the line class function that takes coordinates of points to build lines between
 new.lne<-function(x1,y1,x2,y2){
-  output<-segments(x1,y1,x2,y2)
+  output<-list(x1,y1,x2,y2)
   class(output<- "lne")
   return(output)
 }
 
+#checking to see if it creates lines between points
+#plot.new()
+#line1<-new.lne(pt1$x, pt1$y, pt3$x, pt3$y)
+#line2<- new.lne(pt2$x, pt2$y, pt3$x, pt3$y)
+#line3<- new.lne(pt1$x, pt1$y, pt2$x, pt2$y)
 
-plot.new()
-line1<-new.lne(pt1$x, pt1$y, pt3$x, pt3$y)
-line2<- new.lne(pt2$x, pt2$y, pt3$x, pt3$y)
-line3<- new.lne(pt1$x, pt1$y, pt2$x, pt2$y)
+#lines(pt1, pt3)
+#segments(pt1$x, pt1$y, pt3$x, pt3$y)
+#pot1=c(2,2)
+#pot2=c(4,5)
+#segments(pot1, pot2)
 
-lines(pt1, pt3)
-segments(pt1$x, pt1$y, pt3$x, pt3$y)
-pot1=c(2,2)
-pot2=c(4,5)
-segments(pot1, pot2)
-
-#5. Implement a polygon class that stores a polygon from point objects. Hint: a polygon is really just a load of lines.
-new.poly<-function(ln1, ln2, ln3){
-  output<-list(ln1, ln2, ln3)
+###5. Implement a polygon class that stores a polygon from point objects. Hint: a polygon is really just a load of lines.
+new.poly<-function(lin1, lin2, lin3){
+  output<-list(lin1, lin2, lin3)
   class(output<- "poly")
   return(output)
 }
-new.poly(line1, line2, line3)
+poly<-new.poly(line1, line2, line3)
 
-#6. Write plot methods for point and line objects.
+###6. Write plot methods for point and line objects.
+
+#method function for plotting points
+plot_pts<- function(pts1, ...){
+  plot(pts1$x, pts1$y)
+}
+#checking to see if it plots the point
+plot_pts(pt2)
+
+#method function for plotting a line between points
+plot_line<- function(pts1, pts2, ...){
+  segments(pts1$x, pts1$y, pts2$x, pts2$y)
+}
+#checking to see if it plotted the line between the points
+plot_line(pt2, pt3)
+
+###7. Write a plot method for a polygon. Hint: if this isn’t trivial, you’re doing something wrong
+#plot a polygon from a list of x and y point coordinates
+plot_poly<- function(ln1, ln2, ln3, ...){
+  x= list(ln1$x, ln2$x,ln3$x)
+  y= list(ln1$y, ln2$y, ln3$y)
+  polygon(x,y)
+}
+plot_poly(pt1, pt2, pt3)
+
+
+##8. Create a canvas object that the add function can add point, line, circle, and polygon objects to. Write plot and print methods for this class.
+
+
 
 lines(list(lines(lines(cbind(x,y)), ID="a")))
 plot(NA, xlim=c(0,10), ylim=c(0,10), xlab="x", ylab="y")
