@@ -121,7 +121,7 @@ for (i in 1:width)
   cat("\n")
 }
 
-bx(5,4, "hey", "ll")
+bx(5,4, "hey", "*")
 
 #12. In ecology, hurdle models are often used to model the abundance of species found on survey. They first model the probability that a species will be present at a site (drawn, for example, from a Bernoulli distribution) and then model the abundance for any species that is present (drawn, for example, from the Poisson distribution). Write a function that simulates the abundance of a species at n sites given a probability of presence (p) and that its abundance is drawn from a Poisson with a given λ. Hint: there is no Bernoulli distribution in R, but the Bernoulli is a special case of what distribution?...
 # probability distribution of a random variable
@@ -153,26 +153,32 @@ print(mat) #looking at the matrix
 #rnorm or runif: where n is the random distance generated n times
 #t: the simulation process number of times
 #a is a matrix of the distance traveled over time. (in miles I suppose)
-a<-matrix(ncol=1)
-tm<-(t*5)/60  #this is the time in hrs that has passed after 100 iterations
-
+a<-matrix(ncol=1) # or x values
+b<-matrix(ncol=1) #y values
 t<-100
+tm<-(t*5)/60  #this is the time in hrs that has passed after 100 iterations I don't need this. 
+
 for (i in 1:t){
-  movement = runif(1, min=0, max=.5)
-  a[i]=c(movement)
+  x= rnorm(1)
+  y= rnorm(1)
+  a[i]=c(x)
+  b[i]=c(y)
 }
 
 print(round(a, digits=1))
-#adding up his movement through time. I am assuming he is moving one direction 
-progress<- cumsum(round(a, digits=1))
 
 #plotting the movement
-tm <- seq(5, 500, length=length(a)) #creating a sequence of time in 5 minute intervals 
-tm             
-plot(tm, progress, type="l", xlab="Time (min)", ylab="Movement (miles)")
+plot(a, b, type="l", xlab="x", ylab="y")
 
 ###15. Professor Savitzky is deeply concerned to realise that the member of faculty was, in fact, at the top of a steep mountain in the fog. Approximately 5 miles away, in all directions, from the faculty member’s starting point is a deadly cliff! He asks if you could run your simulation to see how long, on average, until the faculty member plummets to their doom.
+for (i in 1:1000){
+  x=rnorm(1, mean=10)
+  y= rnorm(1)
+  a[i]=c(x)
+  b[i]=c(y)
+}
 
+max(a)
 
 #16. Sadly, by the time you have completed your simulations the faculty member has perished. Professor Savitzky is keen to ensure this will never happen again, and so has suggested each faculty member be attached, via rubber band, to a pole at the centre of the site whenever conducting fieldwork 3. He assures you that you can model this by assuming that the faculty member, at each time-step, moves α× distance-from-pole latitudinally and longitudinally (in addition to the rate of movement you’ve already simulated) each time-step. Simulate this, and see how strong the rubber band (α) must be to keep the faculty member safe for at least a day.
 
