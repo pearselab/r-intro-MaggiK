@@ -30,6 +30,21 @@ my_categ_summary_func(character)
 
 #4. Finally, make a summary function capable of covering both kinds of data. Hint: if your function doesn’t call the functions above, you’re likely doing it wrong.
 magnificent_summary_func<- function(x){
-  return(c(my_categ_summary_func(x), my_summary_func(x)))
+  if(is.numeric(x)){
+    return(my_summary_func(x))
+    } else {
+      return(my_categ_summary_func(x))
+    } 
 }
-magnificent_summary_func()
+magnificent_summary_func(myvector)
+
+#5. A molecular biologist you owe a favour approaches you with a problem. They have a DNA sequence (e.g., ‘ACGATATACGA’) that they need to group into codons (groups of three) and translate into proteins (ignoring all complexities of translation and transcription). Write them a function that will take an arbitrary input sequence and an arbitrary codon lookup table, and output the translated sequence. Hint:expand.grid will help you make a demo lookup table.
+sequence=c("A","C","G","A","T","A","T","C","G","A")
+codon=c("ATA", "CGA")
+proteins=c("x","y")
+#creating a lookup matrix
+table<- matrix(c(proteins), ncol=2)
+colnames(table)<-c(codon)
+table
+
+
