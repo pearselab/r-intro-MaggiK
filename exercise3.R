@@ -50,6 +50,7 @@ new.pts<-function(x, y){
   return(output)
 }
 
+#testing out the point class with random points
 pt1=new.pts(1,1)
 pt2=new.pts(3,1)
 pt3=new.pts(6,3)
@@ -76,12 +77,6 @@ new.lne<-function(x1,y1,x2,y2){
 #line1<-new.lne(pt1$x, pt1$y, pt3$x, pt3$y)
 #line2<- new.lne(pt2$x, pt2$y, pt3$x, pt3$y)
 #line3<- new.lne(pt1$x, pt1$y, pt2$x, pt2$y)
-
-#lines(pt1, pt3)
-#segments(pt1$x, pt1$y, pt3$x, pt3$y)
-#pot1=c(2,2)
-#pot2=c(4,5)
-#segments(pot1, pot2)
 
 ###5. Implement a polygon class that stores a polygon from point objects. Hint: a polygon is really just a load of lines.
 new.poly<-function(lin1, lin2, lin3){
@@ -126,11 +121,11 @@ new.canvas<-function(point, line, circle, polygon){
   return(output)
 }
 
-#plot method: I am plotting the object. print method: am I just printing what is in my list?
+# print method: Printing the object in my list
 print.canvas<- function(ob, ...){
   return(ob)
 }
-
+#plot method: I am plotting all the objects.
 plot_canvas<- function(ob1, ob2, ob3, ...){
   plot_pts(ob1)
   plot_line(ob1, ob2)
@@ -160,7 +155,8 @@ plot_circle <- function(cir, ...){
 #check to see if it works
 plot_circle(c2)
 
-#Got some help from: http://r.789695.n4.nabble.com/how-to-draw-a-circle-td798480.html
+#Got some help with the equation from: http://r.789695.n4.nabble.com/how-to-draw-a-circle-td798480.html
+
 ###10. Write area generic methods for circle and polygon objects.
 area<- function(r){
   UseMethod("area")
@@ -177,6 +173,7 @@ plot_canvas<- function(ob1, ob2, ob3, ob4, ...){
   plot_poly(ob1, ob2, ob3)
   plot_circle(ob4)
 }
+#testing to see if it works using the previously created objects
 plot_canvas(ob1= pt1, ob2= pt2, ob3= pt3, ob4= c2)
 
 

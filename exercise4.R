@@ -39,12 +39,25 @@ magnificent_summary_func<- function(x){
 magnificent_summary_func(myvector)
 
 #5. A molecular biologist you owe a favour approaches you with a problem. They have a DNA sequence (e.g., ‘ACGATATACGA’) that they need to group into codons (groups of three) and translate into proteins (ignoring all complexities of translation and transcription). Write them a function that will take an arbitrary input sequence and an arbitrary codon lookup table, and output the translated sequence. Hint:expand.grid will help you make a demo lookup table.
-sequence=c("A","C","G","A","T","A","T","C","G","A")
-codon=c("ATA", "CGA")
-proteins=c("x","y")
+sequen=c("A","C","G","A","T","A","T","A","C","G","A","A")
+sequen_df<-as.data.frame(sequen)
+sequence2="ACGATATACGAA"
+codon=c("ACG", "ATA", "TAC","GAA" )
+proteins=c("x","y","z","k")
+
 #creating a lookup matrix
-table<- matrix(c(proteins), ncol=2)
-colnames(table)<-c(codon)
+table= as.data.frame(cbind(codon, proteins))
 table
+
+#creating a function: splits the sequence by 3. Then matches the sequence to the codon dataframe table. The index is used to return the protein. 
+#sequen: the sequence as a string
+#looktable: the dataframe lookup table with columns codon and proteins
+DNA_func<- function(sequen, looktable){
+  x<- sapply(seq(from=1, to=nchar(sequen), by=3), function(i) substr(sequen, i, i+2))
+  b<-match(x, looktable$codon)
+ return(paste(looktable$proteins[b]))
+}
+
+DNA_func(sequence2, table)
 
 
