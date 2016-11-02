@@ -60,4 +60,4 @@ DNA_func<- function(sequen, looktable){
 
 DNA_func(sequence2, table)
 
-
+##6. The molecular biologist now asks if you would write a function that will take multiple sequences, translate them, and then flag where the sequences match-up (overlap).

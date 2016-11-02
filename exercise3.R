@@ -55,6 +55,7 @@ pt1=new.pts(1,1)
 pt2=new.pts(3,1)
 pt3=new.pts(6,3)
 
+#function to calculate distance between points
 print.pts<-function(pt1,pt2, ...){
   dif=sqrt(((pt1$x-pt2$x)^2)+((pt1$y-pt2$y)^2))
   return(dif)
