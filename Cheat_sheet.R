@@ -1,4 +1,4 @@
-#Cheat Sheet for R
+#Cheat Sheet for R: Exercise 1
 #Maggi Kraft
 #Programming for biologists Fall 2016
 
@@ -68,7 +68,7 @@ gl(2, 8, labels = c("Control", "Treat"))
 
 #• mean- mean(x, ...)
 
-#•median- median(x, na.rm = FALSE)
+#• median- median(x, na.rm = FALSE)
 
 #•max- max(..., na.rm = FALSE)
 #     min(..., na.rm = FALSE)

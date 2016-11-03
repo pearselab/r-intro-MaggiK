@@ -39,9 +39,8 @@ magnificent_summary_func<- function(x){
 magnificent_summary_func(myvector)
 
 #5. A molecular biologist you owe a favour approaches you with a problem. They have a DNA sequence (e.g., ‘ACGATATACGA’) that they need to group into codons (groups of three) and translate into proteins (ignoring all complexities of translation and transcription). Write them a function that will take an arbitrary input sequence and an arbitrary codon lookup table, and output the translated sequence. Hint:expand.grid will help you make a demo lookup table.
-sequen=c("A","C","G","A","T","A","T","A","C","G","A","A")
-sequen_df<-as.data.frame(sequen)
-sequence2="ACGATATACGAA"
+
+sequence2<-"ACGATATACGAA"
 codon=c("ACG", "ATA", "TAC","GAA" )
 proteins=c("x","y","z","k")
 
@@ -60,4 +59,3 @@ DNA_func<- function(sequen, looktable){
 
 DNA_func(sequence2, table)
 
-##6. The molecular biologist now asks if you would write a function that will take multiple sequences, translate them, and then flag where the sequences match-up (overlap).

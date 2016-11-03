@@ -1,10 +1,13 @@
-###Programming for Biologists
+###Programming for Biologists due Nov. 4th 2016
 ###Exercise 3
+######Maggi Kraft
 
 ###1. Implement a cat class, complete with race and print methods
+#implementing the caat class
 kittywitty <-list(length=15, weight=10, breed="white")
 class(kittywitty)<- "cat"
 
+#implementing the cat class in a function
 new.cat<-function(weight, breed){
   output <- list(weight=weight, breed=breed)
   class(output)<- "cat"
@@ -32,7 +35,6 @@ print.cat <- function(x, ...){
 new.cat(20, "brown") #This  brown cat weighs  20 kg (it works!)
 
 ###2. Implement a point class that holds x and y information for a point in space.
-
 new.pts<-function(x, y){
   output <- list(x=x, y=y)
   class(output)<- "pts"
@@ -40,10 +42,7 @@ new.pts<-function(x, y){
 }
 
 ###3. Write a distance method that calculates the distance between two points in space
-pts <-list(x=2, y=1)
-class(pts)<- "pts"
-pts
-
+#creating the points class. Each point has x and y values. 
 new.pts<-function(x, y){
   output <- list(x=x, y=y)
   class(output)<- "pts"
@@ -134,7 +133,7 @@ plot_canvas<- function(ob1, ob2, ob3, ...){
 }
 plot_canvas(pt3, pt2, pt1)
 
-
+#extra code for me to clear my plot/create a new plot. 
 plot.new()
 plot(NA, xlim=c(0,10), ylim=c(0,10), xlab="x", ylab="y")
 
@@ -177,11 +176,4 @@ plot_canvas<- function(ob1, ob2, ob3, ob4, ...){
 #testing to see if it works using the previously created objects
 plot_canvas(ob1= pt1, ob2= pt2, ob3= pt3, ob4= c2)
 
-
-####12. Add a summary method for canvas that calculates the height and width of the canvas, the fraction of the canvas covered in filled-in polygons and circles (if appropriate), and average distance between any points on the canvas (if appropriate).
-
-summary(circle_object)
-
-lines(list(lines(lines(cbind(x,y)), ID="a")))
-plot(NA, xlim=c(0,10), ylim=c(0,10), xlab="x", ylab="y")
 

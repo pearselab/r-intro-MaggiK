@@ -1,5 +1,6 @@
-#Programming for Biologists 10/24
-#control flow exercises
+#####Programming for Biologists 10/24
+######control flow exercises: Exercise 2
+######Maggi Kraft
 
 ###1. Write a loop that prints out the numbers from 20 to 10
 for (i in 20:10){
@@ -13,6 +14,7 @@ for(i in 20:10){
 }
 
 #3. Write a function that calculates whether a number is a prime number (hint: what does 2 %% 3 give you?) 
+#where num is some number
 p_func <- function(num){
   if(sum(num/1:num==num%/%1:num)==2)
     print(paste(num, "job: Number"))
@@ -24,7 +26,6 @@ p_func(7)
 #got some help with the prime number function from: http://stackoverflow.com/questions/19767408/prime-number-function-in-r
 
 ###4 Write a loop that prints out the numbers from 1 to 20, printing “Good: NUMBER” if the number is divisible by five and “Job: NUMBER” if then number is prime, and nothing otherwise.
-
 for(num in 1:20){
   if(num%%5==0) {
     print(paste(num, "Good: number")) } else {
@@ -42,6 +43,7 @@ pop_growth(280,100,.4,30)
 y=pop_growth(a,b,c,t)
 y
 ###6. The biologist likes your function so much they want you to write another function that plots the progress of the population over a given length of time. Write it for them.
+
 #note: Karen helped me with this. 
 pop_growth=function(a, b, c, d){
   t<-0
@@ -107,6 +109,7 @@ bx_func(x,y,tx)
 #11. Modify your box function to build boxes of arbitrary text, taking dimensions specified in terms of dimensions, not the text. For example, box("wdp", 3, 9, "hey") might produce:
 
 #where width= the width, height=the height, txt= is the text in the middle, symb= symbol used to create the box
+#I couldn't use the same method as above
 bx<- function(width, height,txt, symb){
 for (k in 1:width)
   cat(symb)
@@ -162,30 +165,33 @@ mat #looking at the matrix
 a<-matrix(ncol=1) # x values
 b<-matrix(ncol=1) #y values
 t<-100
-tm<-(t*5)/60  #this is the time in hrs that has passed after 100 iterations  
+tm<-(t*5)/60  #this is the time in hrs that has passed after t iterations  
 tm
+#loop creatng random numbers for x and y. Saves the numbers in a matrices, a and b. The mean is set to 2. This guy is sprinting and can cover distance. 
 for (i in 1:t){
-  x= (x+rnorm(1))
-  y= (y+rnorm(1))
+  x= rnorm(1, mean=2)
+  y= rnorm(1, mean=2)
   a[i]=c(x)
   b[i]=c(y)
 }
+
 #checking the values of x and y
 round(a, digits=1)
 round(b, digits=1)
 #plotting the movement
-plot(a, b, type="l", xlab="x", ylab="y")
+plot(a, b, type="l", xlab="longitude", ylab="latitude")
 
 ###15. Professor Savitzky is deeply concerned to realise that the member of faculty was, in fact, at the top of a steep mountain in the fog. Approximately 5 miles away, in all directions, from the faculty member’s starting point is a deadly cliff! He asks if you could run your simulation to see how long, on average, until the faculty member plummets to their doom.
 a<-matrix(ncol=1) # x values
 b<-matrix(ncol=1) #y values
 
-t<-1000
+t<-2000 #the number of iterations or time to put into the loop
+
 for (i in 1:t){
-  x= (x+rnorm(1))
-  y= (y+rnorm(1))
-  a[i] =c(x)
-  b[i]=c(y)
+  x= rnorm(1, mean=2)
+  y= rnorm(1, mean=2)
+  a[i]= c(x)
+  b[i]= c(y)
   if(abs(x)>5 | abs(y) >5 ){
     break
   }
@@ -195,9 +201,5 @@ for (i in 1:t){
 }
 a
 i
-
-
-#16. Sadly, by the time you have completed your simulations the faculty member has perished. Professor Savitzky is keen to ensure this will never happen again, and so has suggested each faculty member be attached, via rubber band, to a pole at the centre of the site whenever conducting fieldwork 3. He assures you that you can model this by assuming that the faculty member, at each time-step, moves α× distance-from-pole latitudinally and longitudinally (in addition to the rate of movement you’ve already simulated) each time-step. Simulate this, and see how strong the rubber band (α) must be to keep the faculty member safe for at least a day.
-
-
-#17. (If you finish early: Most, if not all, faculty members are not as young as they once were. See what effect the faculty member tiring (and eventually sitting down and giving up) would have on their likelihood of survival. What would happen if a faculty member panicked and walked faster through time?4)
+tm<-(i*5)/60
+tm
