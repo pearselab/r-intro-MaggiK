@@ -30,37 +30,17 @@ my_categ_summary_func(character)
 
 #4. Finally, make a summary function capable of covering both kinds of data. Hint: if your function doesn’t call the functions above, you’re likely doing it wrong.
 #where x is a matrix
-numer<- sapply(bn, is.numeric)
-char<- sapply(bn, !is.numeric)
+# where is some dataframe
 magnificent_summary_func<- function(x){
+  numer<- sapply(x, is.numeric)
+  char<- !sapply(x, is.numeric)
   nm_x<-subset(x, numer)
   ch_x<-subset(x, char)
   my_summary_func(nm_x)
   my_categ_summary_func(ch_x)
 }
 
-numer<- sapply(bn, is.numeric)
-magnificent_summary_func<- function(x){
-  nm_x<-subset(x, numer)
-  my_summary_func(nm_x)
-  my_categ_summary_func(x)
-}
-
 magnificent_summary_func(bn)
-numer
-
-nmxx=subset(x, numer)
-nmxx<-sapply(bn, is.character)
-nmxx
-my_summary_func(numer)
-my_categ_summary_func(x)
-
-
-nm= c(2,3)
-ch= c("dog","cat")
-bn=cbind(nm, ch)
-bn
-bn= as.data.frame(bn)
 
 #5. A molecular biologist you owe a favour approaches you with a problem. They have a DNA sequence (e.g., ‘ACGATATACGA’) that they need to group into codons (groups of three) and translate into proteins (ignoring all complexities of translation and transcription). Write them a function that will take an arbitrary input sequence and an arbitrary codon lookup table, and output the translated sequence. Hint:expand.grid will help you make a demo lookup table.
 
