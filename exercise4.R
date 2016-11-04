@@ -4,39 +4,63 @@
 ###1. replicate is an important function that allows you to quickly generate random numbers. Use it to create a dataset of 10 variables, each drawn from a Normal distribution with different means and variances. This can be achieved in one line.
 
 #replicating 1 set of 10 random numbers. 
-random= replicate(1, rnorm(10), simplify="vector")
-
+random= replicate(2, rnorm(10, mean=rnorm(1), sd= runif(1, min=0, max=1)), simplify="vector")
+random
+#making it into a dataframe
+rando<-as.data.frame(random)
 #2. Make your own version of the summary function for continuous datasets (like the one you generated above). You don’t have to slavishly replicated summary.data.frame; write something you would find useful.
-#summary function gives me a mean, min, max
+#summary function 
+#where x is dataframe
 my_summary_func<- function(x){
-  mn= mean(x)
-  mx = max(x)
-  mnn = min(x)
-  return(c(mn, mx, mnn))
+  ml<- sapply(x, function(i) i*2)
+  mn <- apply(x, 2, mean)
+  mx <- apply(x, 2, max)
+  return(c(ml,mn, mx))
 }
-my_summary_func(myvector)
-myvector= c(0:10)
-
 #3. Write a summary function to summarise datasets containing only categorical (...!is.numeric...) data.
-character= c("dog", "cat")
+character= as.data.frame(c("dog", "cat"))
 my_categ_summary_func<- function(x){
   cls= class(x)
   nm= head(x)
-  l= length(x)
+  l= apply(x, 1, length)
   return(c(cls, l, nm))
 }
 
 my_categ_summary_func(character)
 
 #4. Finally, make a summary function capable of covering both kinds of data. Hint: if your function doesn’t call the functions above, you’re likely doing it wrong.
+#where x is a matrix
+numer<- sapply(bn, is.numeric)
+char<- sapply(bn, !is.numeric)
 magnificent_summary_func<- function(x){
-  if(is.numeric(x)){
-    return(my_summary_func(x))
-    } else {
-      return(my_categ_summary_func(x))
-    } 
+  nm_x<-subset(x, numer)
+  ch_x<-subset(x, char)
+  my_summary_func(nm_x)
+  my_categ_summary_func(ch_x)
 }
-magnificent_summary_func(myvector)
+
+numer<- sapply(bn, is.numeric)
+magnificent_summary_func<- function(x){
+  nm_x<-subset(x, numer)
+  my_summary_func(nm_x)
+  my_categ_summary_func(x)
+}
+
+magnificent_summary_func(bn)
+numer
+
+nmxx=subset(x, numer)
+nmxx<-sapply(bn, is.character)
+nmxx
+my_summary_func(numer)
+my_categ_summary_func(x)
+
+
+nm= c(2,3)
+ch= c("dog","cat")
+bn=cbind(nm, ch)
+bn
+bn= as.data.frame(bn)
 
 #5. A molecular biologist you owe a favour approaches you with a problem. They have a DNA sequence (e.g., ‘ACGATATACGA’) that they need to group into codons (groups of three) and translate into proteins (ignoring all complexities of translation and transcription). Write them a function that will take an arbitrary input sequence and an arbitrary codon lookup table, and output the translated sequence. Hint:expand.grid will help you make a demo lookup table.
 

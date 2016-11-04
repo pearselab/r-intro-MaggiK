@@ -143,4 +143,9 @@ which(is.na(x))
 
 #• par- set or query graphical parameters. 
 # - use with ggplot. to edit the plot and change characteristics
+# -  xlog and ylog: if true a logarithmic scale is in use
+# - usr: a vecor of form c(x1,x2,y1,y2) giving the extremems of the user coordinates of the plotting region
+# - pch: integer specifying a symbol or single character to be used as the default in plotting points (stars, dots, dash etc)
+# - mfcol, mfrow: A vector of the form c(nr, nc). Subsequent figures will be drawn in an nr-by nc array on the device by columns (mfcol), or rows (mfrow), respectively.
+# - lwd: The line width
 
